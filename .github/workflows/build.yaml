@@ -31,5 +31,20 @@ jobs:
             password: ${{ secrets.DOCKER_PASSWORD}}
             registry: docker.io
             repository: neozalt/cd
-            tag_with_sha: true
+            #tag_with_sha: true
+            tags: latest
+        - name: Run Trivy vulnerability scanner
+            uses: aquasecurity/trivy-action@master
+            with:
+              image-ref: 'docker.io/DOCKER_USERNAME/cd:latest'
+              format: 'table'
+              exit-code: '1'
+              ignore-unfixed: true
+              vuln-type: 'os,library'
+              severity: 'CRITICAL,HIGH'
+
+          - name: Upload Trivy scan results to GitHub Security tab
+            uses: github/codeql-action/upload-sarif@v1
+            with:
+              sarif_file: 'trivy-results.sarif'
 
