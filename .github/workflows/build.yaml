@@ -14,7 +14,7 @@ jobs:
           uses: docker/build-push-action@v1
           with:
             username: ${{ secrets.neozalt }}
-            password: ${{ secrets.Neozalt11titan! }}
+            password: ${{ secrets.Palace11titan }}
             registry: docker.io
             repository: neozalt/cd
             tag_with_sha: true
