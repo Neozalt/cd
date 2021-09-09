@@ -38,7 +38,7 @@ jobs:
           with:
             image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME}}/cd:latest'
             format: 'template'
-            exit-code: '1'
+            exit-code: '0'
             ignore-unfixed: true
             vuln-type: 'os,library'
             severity: 'CRITICAL,HIGH'
