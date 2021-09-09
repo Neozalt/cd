@@ -9,16 +9,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
-        - uses: sburris/dependency-check-action@master
-        with:
-            Project-Name: TestApp
-        - uses: actions/checkout@v2
         - name: Install NPM dependencies
-        run: |
+          run: |
             npm install --production --unsafe-perm
+        - uses: sburris/dependency-check-action@master
+          with:
+            Project-Name: TestApp
         - name: Archive dependency check reports
-        uses: actions/upload-artifact@v1
-        with:
+          uses: actions/upload-artifact@v1
+          with:
             name: reports
             path: reports
     build:
