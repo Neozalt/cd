@@ -6,6 +6,9 @@ on:
         - main
 jobs:
     owasp :
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
         - uses: sburris/dependency-check-action@master
         with:
             Project-Name: TestApp
